@@ -13,3 +13,11 @@ An interactive, multilingual map designed to help people find charity points, mo
 * Leaflet.js (Mapping Library)
 
 **Developed with ❤️ for social impact.**
+
+## 📸 Live Preview
+Here is a glimpse of the interactive map in action:
+
+<p align="center">
+  <img src="1000112605.png" width="45%" />
+
+  
