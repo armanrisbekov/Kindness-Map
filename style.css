@@ -1,0 +1,125 @@
+:root {
+    --duo-blue: #1cb0f6;
+    --duo-green: #58cc02;
+    --duo-orange: #ff9600;
+    --glass: rgba(255, 255, 255, 0.95);
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #f0f2f5;
+}
+
+header {
+    background: var(--duo-blue);
+    padding: 12px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    z-index: 1001;
+}
+
+header h1 { margin: 0; font-size: 20px; font-weight: 900; }
+
+.side-controls {
+    position: absolute;
+    top: 70px;
+    left: 15px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.control-panel {
+    background: var(--glass);
+    padding: 8px 12px;
+    border-radius: 15px;
+    border: 2px solid white;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+select {
+    border: none;
+    background: transparent;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    color: #4b4b4b;
+    cursor: pointer;
+    outline: none;
+}
+
+.btn-city {
+    cursor: pointer;
+    font-weight: 800;
+    color: #4b4b4b;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.author-tag {
+    position: absolute;
+    bottom: 25px;
+    right: 80px;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 800;
+    backdrop-filter: blur(5px);
+    pointer-events: none;
+    letter-spacing: 1px;
+}
+
+#map { flex-grow: 1; width: 100%; z-index: 1; }
+.leaflet-right { right: 10px !important; }
+.leaflet-top { top: auto !important; bottom: 100px !important; }
+
+.filter-bar {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    display: flex;
+    gap: 10px;
+    background: var(--glass);
+    padding: 8px 15px;
+    border-radius: 30px;
+    border: 2px solid white;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.filter-btn {
+    border: none;
+    background: #f1f1f1;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.2s;
+    border-bottom: 3px solid #ddd;
+    font-size: 13px;
+}
+
+.filter-btn.active {
+    background: var(--duo-green);
+    color: white;
+    border-bottom-color: #46a302;
+    transform: scale(1.05);
+}
