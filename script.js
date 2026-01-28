@@ -11,8 +11,7 @@ const cities = {
 };
 
 const locations = [
-    // Қараөткел ауылы, Шоқан Уәлиханов көшесі
-    { type: 'village', name: {en: "🏠 <b>MY VILLAGE</b>", tr: "🏠 <b>KÖYÜM</b>", kz: "🏠 <b>МЕНІҢ АУЫЛЫМ</b>", ru: "🏠 <b>МОЯ ДЕРЕВНЯ</b>"}, coords: [51.1110, 71.3140], isSpecial: true },
+    { type: 'village', name: {en: "🏠 <b>MY VILLAGE</b>", tr: "🏠 <b>KÖYÜM</b>", kz: "🏠 <b>МЕНІҢ АУЫЛЫМ</b>", ru: "🏠 <b>МОЯ ДЕРЕВНЯ</b>"}, coords: [51.1578, 71.3045], isSpecial: true },
     { type: 'food', name: {en: "Free Soup 🥣", tr: "Bedava Çorba 🥣", kz: "Тегін Сорпа 🥣", ru: "Бесплатный Суп 🥣"}, coords: [51.1494, 71.4391] },
     { type: 'food', name: {en: "Ankara Soup Center 🍲", tr: "Ankara Çorba Evi 🍲", kz: "Анкара сорпа үйі 🍲", ru: "Центр Супа Анкара 🍲"}, coords: [39.9400, 32.8640] },
     { type: 'clothes', name: {en: "Warm Jackets 🧥", tr: "Sıcak Ceketler 🧥", kz: "Жылы курткалар 🧥", ru: "Теплые куртки 🧥"}, coords: [51.1894, 71.4691] },
@@ -37,25 +36,21 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 function handleLangChange() {
     const select = document.getElementById('langSelect');
-    if(select) {
-        currentLang = select.value;
-        updateUI();
-    }
+    currentLang = select.value;
+    updateUI();
 }
 
 function updateUI() {
     const t = translations[currentLang];
-    const titleEl = document.getElementById('site-title');
-    if(titleEl) titleEl.innerText = t.title;
+    document.getElementById('site-title').innerText = t.title;
+    document.getElementById('btn-all').innerText = t.all;
+    document.getElementById('btn-food').innerText = t.food;
+    document.getElementById('btn-clothes').innerText = t.clothes;
+    document.getElementById('btn-mosque').innerText = t.mosque;
+    document.getElementById('btn-charity').innerText = t.charity;
     
-    ['all', 'food', 'clothes', 'mosque', 'charity'].forEach(id => {
-        const btn = document.getElementById('btn-' + id);
-        if(btn) btn.innerText = t[id];
-    });
-    
-    const cityText = document.getElementById('city-text');
     const nextCity = currentCity === 'astana' ? 'Ankara 🇹🇷' : 'Astana 🇰🇿';
-    if(cityText) cityText.innerText = `${t.cityBtn} ${nextCity}`;
+    document.getElementById('city-text').innerText = `${t.cityBtn} ${nextCity}`;
     renderMarkers();
 }
 
@@ -88,9 +83,8 @@ function toggleCity() {
 function setFilter(type, btn) {
     currentFilter = type;
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    if(btn) btn.classList.add('active');
+    btn.classList.add('active');
     renderMarkers();
 }
 
-// Карта толық жүктелгенде іске қосу
-window.onload = updateUI;
+updateUI();
