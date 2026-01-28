@@ -11,6 +11,7 @@ const cities = {
 };
 
 const locations = [
+    { type: 'village', name: {en: "🏠 <b>MY VILLAGE</b>", tr: "🏠 <b>KÖYÜM</b>", kz: "🏠 <b>МЕНІҢ АУЫЛЫМ</b>", ru: "🏠 <b>МОЯ ДЕРЕВНЯ</b>"}, coords: [51.1578, 71.3045], isSpecial: true },
     { type: 'food', name: {en: "Free Soup 🥣", tr: "Bedava Çorba 🥣", kz: "Тегін Сорпа 🥣", ru: "Бесплатный Суп 🥣"}, coords: [51.1494, 71.4391] },
     { type: 'food', name: {en: "Ankara Soup Center 🍲", tr: "Ankara Çorba Evi 🍲", kz: "Анкара сорпа үйі 🍲", ru: "Центр Супа Анкара 🍲"}, coords: [39.9400, 32.8640] },
     { type: 'clothes', name: {en: "Warm Jackets 🧥", tr: "Sıcak Ceketler 🧥", kz: "Жылы курткалар 🧥", ru: "Теплые куртки 🧥"}, coords: [51.1894, 71.4691] },
@@ -57,8 +58,17 @@ function renderMarkers() {
     markers.forEach(m => map.removeLayer(m));
     markers = [];
     locations.forEach(loc => {
-        if (currentFilter === 'all' || loc.type === currentFilter) {
-            const m = L.marker(loc.coords).bindPopup(`<b>${loc.name[currentLang]}</b>`).addTo(map);
+        if (currentFilter === 'all' || loc.type === currentFilter || loc.isSpecial) {
+            const markerOptions = loc.isSpecial ? { icon: L.icon({
+                iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+                shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+                iconSize: [25, 41],
+                iconAnchor: [12, 41],
+                popupAnchor: [1, -34],
+                shadowSize: [41, 41]
+            }) } : {};
+
+            const m = L.marker(loc.coords, markerOptions).bindPopup(`${loc.name[currentLang]}`).addTo(map);
             markers.push(m);
         }
     });
@@ -78,3 +88,4 @@ function setFilter(type, btn) {
 }
 
 updateUI();
+
