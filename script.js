@@ -11,8 +11,10 @@ const cities = {
 };
 
 const locations = [
-    const locations = [
+    // Түзетілген координата: Дәл Қараөткел ауылы (Шоқан Уәлиханов көшесі)
     { type: 'village', name: {en: "🏠 <b>MY VILLAGE</b>", tr: "🏠 <b>KÖYÜM</b>", kz: "🏠 <b>МЕНІҢ АУЫЛЫМ</b>", ru: "🏠 <b>МОЯ ДЕРЕВНЯ</b>"}, coords: [51.1040, 71.3050], isSpecial: true },
+    
+    { type: 'food', name: {en: "Free Soup 🥣", tr: "Bedava Çorba 🥣", kz: "Тегін Сорпа 🥣", ru: "Бесплатный Суп 🥣"}, coords: [51.1494, 71.4391] },
     { type: 'food', name: {en: "Ankara Soup Center 🍲", tr: "Ankara Çorba Evi 🍲", kz: "Анкара сорпа үйі 🍲", ru: "Центр Супа Анкара 🍲"}, coords: [39.9400, 32.8640] },
     { type: 'clothes', name: {en: "Warm Jackets 🧥", tr: "Sıcak Ceketler 🧥", kz: "Жылы курткалар 🧥", ru: "Теплые куртки 🧥"}, coords: [51.1894, 71.4691] },
     { type: 'clothes', name: {en: "Charity Box 📦", tr: "Yardım Kutusu 📦", kz: "Қайырымдылық қорабы 📦", ru: "Бокс добра 📦"}, coords: [39.9200, 32.8500] },
@@ -88,4 +90,3 @@ function setFilter(type, btn) {
 }
 
 updateUI();
-
