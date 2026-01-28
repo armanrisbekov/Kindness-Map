@@ -123,3 +123,7 @@ select {
     border-bottom-color: #46a302;
     transform: scale(1.05);
 }
+
+.red-marker {
+    filter: hue-rotate(150deg) brightness(0.8) saturate(5);
+}
